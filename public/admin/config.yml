@@ -1,0 +1,28 @@
+backend:
+  name: git-gateway
+  branch: main # Or master, or whatever your main branch is
+
+media_folder: "src/assets/images/uploads" # Where to store uploaded images
+public_folder: "/src/assets/images/uploads" # The public path to the images
+
+collections:
+  - name: "settings"
+    label: "网站基础设置"
+    files:
+      - label: "核心配置"
+        name: "config"
+        file: "src/config.yaml"
+        fields:
+          - { label: "网站名称", name: "site", widget: "string" }
+          - { label: "网站描述", name: "description", widget: "string" }
+          # You can add more fields from config.yaml here
+
+  - name: "blog"
+    label: "博客文章"
+    folder: "src/content/post" # The folder where blog posts are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template
+    fields:
+      - { label: "标题", name: "title", widget: "string" }
+      - { label: "发布日期", name: "publishDate", widget: "date" }
+      - { label: "文章内容", name: "body", widget: "markdown" }
