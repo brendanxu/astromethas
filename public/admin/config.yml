@@ -1,28 +1,83 @@
+# ===================================================================
+# Decap CMS Configuration for AstroWind Template
+# ===================================================================
+
 backend:
   name: git-gateway
-  branch: main # Or master, or whatever your main branch is
+  branch: main
 
-media_folder: "src/assets/images/uploads" # Where to store uploaded images
-public_folder: "/src/assets/images/uploads" # The public path to the images
+# 设置媒体文件（如上传的图片）的存储位置
+media_folder: "src/assets/images/uploads"
+public_folder: "/assets/images/uploads"
 
+# 定义可编辑的内容集合 (Collections)
 collections:
+  # -----------------------------------------------------------------
+  # 1. 网站全局设置
+  # -----------------------------------------------------------------
   - name: "settings"
-    label: "网站基础设置"
+    label: "⚙️ 网站全局设置"
+    label_singular: "全局设置"
     files:
-      - label: "核心配置"
-        name: "config"
+      - name: "config"
+        label: "基础信息与导航"
         file: "src/config.yaml"
         fields:
-          - { label: "网站名称", name: "site", widget: "string" }
-          - { label: "网站描述", name: "description", widget: "string" }
-          # You can add more fields from config.yaml here
+          - { label: "网站名称", name: "siteName", widget: "string" }
+          - { label: "网站Logo (亮色模式)", name: "logo", widget: "image", required: false }
+          - { label: "网站Logo (暗色模式)", name: "logo_dark", widget: "image", required: false }
+          - label: "顶部导航栏链接"
+            name: "navigation"
+            widget: "list"
+            fields:
+              - { label: "链接文字", name: "text", widget: "string" }
+              - { label: "链接地址", name: "href", widget: "string" }
+          - label: "页脚链接"
+            name: "footer"
+            widget: "object"
+            fields:
+              - label: "次要链接"
+                name: "links"
+                widget: "list"
+                fields:
+                  - { label: "链接文字", name: "text", widget: "string" }
+                  - { label: "链接地址", name: "href", widget: "string" }
+              - label: "社交媒体链接"
+                name: "socials"
+                widget: "list"
+                fields:
+                  - { label: "社交图标 (例如: github, twitter)", name: "name", widget: "string" }
+                  - { label: "个人主页链接", name: "href", widget: "string" }
 
-  - name: "blog"
-    label: "博客文章"
-    folder: "src/content/post" # The folder where blog posts are stored
-    create: true # Allow users to create new documents in this collection
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template
+  # -----------------------------------------------------------------
+  # 2. 博客文章管理
+  # -----------------------------------------------------------------
+  - name: "post"
+    label: "✍️ 博客文章"
+    label_singular: "博客文章"
+    folder: "src/content/post"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { label: "标题", name: "title", widget: "string" }
-      - { label: "发布日期", name: "publishDate", widget: "date" }
-      - { label: "文章内容", name: "body", widget: "markdown" }
+      - { label: "文章标题", name: "title", widget: "string" }
+      - { label: "发布日期", name: "publishDate", widget: "datetime" }
+      - { label: "文章分类", name: "category", widget: "string", required: false }
+      - { label: "文章标签", name: "tags", widget: "list", required: false }
+      - { label: "特色图片", name: "image", widget: "image", required: false }
+      - { label: "文章正文", name: "body", widget: "markdown" }
+
+  # -----------------------------------------------------------------
+  # 3. 页面内容管理 (例如：关于我们、服务条款等)
+  # -----------------------------------------------------------------
+  - name: "pages"
+    label: "📄 静态页面"
+    label_singular: "静态页面"
+    folder: "src/content/page"
+    create: true
+    fields:
+      - { label: "页面标题", name: "title", widget: "string" }
+      - { label: "页面正文", name: "body", widget: "markdown" }
+
+# 注意：首页的各个模块（如Hero, Features等）通常直接在 .astro 文件中修改，
+# 如果需要后台管理，则需要对模板代码进行一些改造，将内容提取到数据文件中。
+# 目前这份配置覆盖了最核心的全局设置和动态内容（博客/页面）。
