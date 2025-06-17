@@ -1,0 +1,11 @@
+{
+  "title": "我的专长",
+  "subtitle": "提供专业的技术服务",
+  "items": [
+    {
+      "title": "网站开发",
+      "description": "使用最新技术栈开发现代化网站",
+      "icon": "tabler:code"
+    }
+  ]
+}

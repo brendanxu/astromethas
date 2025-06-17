@@ -1,0 +1,12 @@
+{
+  "title": "欢迎来到我的网站",
+  "subtitle": "我是一名充满激情的开发者",
+  "tagline": "探索·创新·成长",
+  "actions": [
+    {
+      "text": "查看作品",
+      "href": "/projects",
+      "variant": "primary"
+    }
+  ]
+}
