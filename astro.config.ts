@@ -24,6 +24,11 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
 export default defineConfig({
   output: 'static',
 
+  // 禁用开发工具栏
+  devToolbar: {
+    enabled: false
+  },
+
   integrations: [
     tailwind({
       applyBaseStyles: false,
