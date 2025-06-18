@@ -1,0 +1,26 @@
+{
+  "sections": [
+    {
+      "id": "content-1",
+      "title": "基于现代基础构建",
+      "subtitle": "通过采用行业领先的实践获得竞争优势",
+      "content": "得益于这个现代静态站点生成器的性能和开发人员友好的功能。",
+      "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+      "isReversed": true,
+      "items": [
+        {
+          "title": "基于 Astro 5.0 构建",
+          "description": "受益于这个现代静态站点生成器的性能和开发人员友好的功能。"
+        },
+        {
+          "title": "使用 Tailwind CSS 设计",
+          "description": "使用这个高度流行的实用优先 CSS 框架促进快速设计和一致的样式。"
+        },
+        {
+          "title": "跨浏览器兼容性",
+          "description": "确保您的网站在各种网络浏览器中具有一致的外观和功能，为所有用户提供无缝体验。"
+        }
+      ]
+    }
+  ]
+}

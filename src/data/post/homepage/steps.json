@@ -1,0 +1,25 @@
+{
+  "title": "使用 AstroWind 快速启动您的梦想网站",
+  "image": "https://images.unsplash.com/photo-1616198814651-e71f960c3180",
+  "items": [
+    {
+      "title": "步骤 1：下载",
+      "description": "从 GitHub 开始！fork AstroWind 模板或简单地点击"使用此模板"。您的画布已准备就绪，准备好您的数字杰作。只需几次点击，您就已经奠定了基础。",
+      "icon": "tabler:package"
+    },
+    {
+      "title": "步骤 2：添加内容",
+      "description": "将您的愿景倾注其中。添加图像、文本和所有爵士乐，为您的数字空间注入生命。请记住，是内容讲述您的故事，所以要让它引人入胜。",
+      "icon": "tabler:letter-case"
+    },
+    {
+      "title": "步骤 3：自定义样式",
+      "description": "赋予它您的个人风格。定制颜色、字体和布局，直到感觉恰到好处。您的独特风格，由 AstroWind 放大！设计的精确性确保了无缝的用户体验。",
+      "icon": "tabler:paint"
+    },
+    {
+      "title": "准备就绪！",
+      "icon": "tabler:check"
+    }
+  ]
+}

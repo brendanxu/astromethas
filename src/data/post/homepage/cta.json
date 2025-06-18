@@ -1,0 +1,13 @@
+{
+  "title": "Astro + Tailwind CSS",
+  "subtitle": "对这个页面上看到的巨大虚假数字感到非常惊讶。不要再浪费时间了！:P",
+  "actions": [
+    {
+      "variant": "primary",
+      "text": "获取模板",
+      "href": "https://github.com/onwidget/astrowind",
+      "target": "_blank",
+      "icon": "tabler:download"
+    }
+  ]
+}

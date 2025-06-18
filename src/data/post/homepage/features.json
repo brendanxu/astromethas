@@ -1,0 +1,39 @@
+{
+  "id": "features",
+  "tagline": "特色功能",
+  "title": "AstroWind 为您提供什么",
+  "subtitle": "市场上最专业、最全面的模板之一。2022、2023 和 2024 年最受欢迎和 fork 最多的 Astro 主题。",
+  "columns": 2,
+  "items": [
+    {
+      "title": "Astro + Tailwind CSS 集成",
+      "description": "两个优秀框架之间的无缝集成，提供高生产力、高性能和多功能性。",
+      "icon": "tabler:brand-tailwind"
+    },
+    {
+      "title": "即用型组件",
+      "description": "使用 Tailwind CSS 制作的小部件，可用于营销网站、SaaS、博客、个人资料、小型企业...",
+      "icon": "tabler:components"
+    },
+    {
+      "title": "最佳实践",
+      "description": "创建安全、高效且用户友好的网站，提供卓越的体验和持久的价值。",
+      "icon": "tabler:list-check"
+    },
+    {
+      "title": "出色的页面速度",
+      "description": "良好的页面速度会影响有机搜索排名，改善用户体验（UI/UX）并提高转化率。",
+      "icon": "tabler:rocket"
+    },
+    {
+      "title": "搜索引擎优化 (SEO)",
+      "description": "SEO 的价值在于它能够提高网站的可见性，推动有机流量，使其能够接触到更广泛的受众。",
+      "icon": "tabler:arrows-right-left"
+    },
+    {
+      "title": "开放新想法和贡献",
+      "description": "拥抱开放新想法和贡献的文化是促进创新、协作和动态用户体验的关键。",
+      "icon": "tabler:bulb"
+    }
+  ]
+}

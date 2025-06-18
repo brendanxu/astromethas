@@ -1,0 +1,19 @@
+{
+  "tagline": "免费模板",
+  "title": "使用 Astro 5.0 + Tailwind CSS 创建网站的免费模板",
+  "subtitle": "AstroWind 是一个免费、可定制且生产就绪的 Astro 5.0 + Tailwind CSS 模板。适用于初创公司、小型企业、SaaS 网站、专业作品集、营销网站、登陆页面和博客。",
+  "actions": [
+    {
+      "variant": "primary",
+      "text": "获取模板",
+      "href": "https://github.com/onwidget/astrowind",
+      "target": "_blank",
+      "icon": "tabler:download"
+    },
+    {
+      "text": "了解更多",
+      "href": "#features"
+    }
+  ],
+  "image": "~/assets/images/hero-image.png"
+}

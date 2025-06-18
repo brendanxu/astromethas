@@ -1,16 +1,24 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-
 import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+
+// 导入数据文件
+import heroData from '~/data/homepage/hero.json';
+import featuresData from '~/data/homepage/features.json';
+import contentData from '~/data/homepage/content.json';
+import stepsData from '~/data/homepage/steps.json';
+import faqsData from '~/data/homepage/faqs.json';
+import statsData from '~/data/homepage/stats.json';
+import ctaData from '~/data/homepage/cta.json';
+
 
 const metadata = {
   title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
@@ -251,9 +259,9 @@ const metadata = {
   <!-- Features2 Widget ************** -->
 
   <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    tagline="Components"
+    title="最常用的小部件"
+    subtitle="提供使用 Tailwind CSS 构建网站的常用组件"
+    tagline="组件"
     items={[
       {
         title: 'Headers',
@@ -315,11 +323,11 @@ const metadata = {
   <!-- HighlightedPosts Widget ******* -->
 
   <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                        Astro is a very interesting technology. Thanks.
-                `}
+    title="在我们的博客中了解更多内容"
+    information={`博客用于显示 AstroWind 文档。
+                  每篇新文章都将是您需要了解的重要步骤，
+                  以成为使用 Astro + Tailwind CSS 创建网站的专家。`}
+                
   />
 
   <!-- FAQs Widget ******************* -->
