@@ -10,6 +10,8 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import { getEntry } from 'astro:content';
+
 
 // 导入数据文件
 import heroData from '~/data/homepage/hero.json';
@@ -20,10 +22,12 @@ import faqsData from '~/data/homepage/faqs.json';
 import statsData from '~/data/homepage/stats.json';
 import ctaData from '~/data/homepage/cta.json';
 
+const homepageContent = await getEntry('homepage', 'content');
+const { hero, features } = homepageContent.data;
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
-  ignoreTitleTemplate: true,
+  title: hero.title,
+  description: hero.subtitle,
 };
 ---
 

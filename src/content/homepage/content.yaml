@@ -1,0 +1,27 @@
+hero:
+  title: "欢迎来到我们的网站"
+  subtitle: "我们提供专业的技术解决方案"
+  tagline: "创新 · 专业 · 可靠"
+  image: "/src/assets/images/hero-bg.jpg"
+  actions:
+    - text: "开始使用"
+      href: "/get-started"
+      variant: "primary"
+      icon: "tabler:rocket"
+    - text: "了解更多"
+      href: "/about"
+      variant: "secondary"
+
+features:
+  title: "我们的优势"
+  subtitle: "为什么选择我们"
+  items:
+    - title: "专业团队"
+      description: "拥有多年经验的技术专家"
+      icon: "tabler:users"
+    - title: "优质服务"
+      description: "7x24小时技术支持"
+      icon: "tabler:headset"
+    - title: "创新方案"
+      description: "采用最新技术栈"
+      icon: "tabler:bulb"

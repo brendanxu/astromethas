@@ -1,448 +1,108 @@
-# Netlify CMS 完整配置
-# 位置: public/admin/config.yml
-
 backend:
   name: git-gateway
   branch: main
-  commit_messages:
-    create: '创建 {{collection}} "{{slug}}"'
-    update: '更新 {{collection}} "{{slug}}"'
-    delete: '删除 {{collection}} "{{slug}}"'
 
-# 本地测试
-local_backend: true
-
-# 媒体文件
 media_folder: "src/assets/images"
 public_folder: "/src/assets/images"
 
-# 中文界面
 locale: 'zh_Hans'
 
-# 发布模式
-publish_mode: editorial_workflow
-
-# 内容集合
 collections:
-  # ========================================
-  # 1. 网站全局设置
-  # ========================================
-  - name: "config"
-    label: "⚙️ 网站配置"
+  # 网站配置
+  - name: "settings"
+    label: "⚙️ 网站设置"
     delete: false
     editor:
       preview: false
     files:
       - name: "site"
-        label: "网站基本信息"
-        file: "src/config.yaml"
+        label: "基本设置"
+        file: "src/content/config/site.yaml"
         fields:
-          - label: "网站设置"
-            name: "site"
+          - label: "Logo设置"
+            name: "logo"
             widget: "object"
+            summary: "{{fields.text}}"
             fields:
-              - {label: "网站名称", name: "name", widget: "string", default: "AstroWind"}
-              - {label: "网站地址", name: "site", widget: "string", hint: "例如: https://astrowind.vercel.app"}
-              - {label: "基础路径", name: "base", widget: "string", default: "/"}
-              - {label: "尾部斜杠", name: "trailingSlash", widget: "boolean", default: false}
-              - {label: "Google验证ID", name: "googleSiteVerificationId", widget: "string", required: false}
+              - {label: "Logo文字", name: "text", widget: "string"}
+              - {label: "Logo图片", name: "image", widget: "image", required: false, hint: "留空则显示文字"}
           
-          - label: "SEO 元数据"
-            name: "metadata"
+          - label: "导航菜单"
+            name: "navigation"
             widget: "object"
             fields:
-              - label: "标题设置"
-                name: "title"
-                widget: "object"
-                fields:
-                  - {label: "默认标题", name: "default", widget: "string"}
-                  - {label: "标题模板", name: "template", widget: "string", default: "%s — AstroWind"}
-              - {label: "描述", name: "description", widget: "text"}
-              - label: "搜索引擎"
-                name: "robots"
-                widget: "object"
-                fields:
-                  - {label: "允许索引", name: "index", widget: "boolean", default: true}
-                  - {label: "允许跟踪", name: "follow", widget: "boolean", default: true}
-
-          - label: "博客设置"
-            name: "apps"
-            widget: "object"
-            fields:
-              - label: "blog"
-                name: "blog"
-                widget: "object"
-                fields:
-                  - {label: "启用博客", name: "isEnabled", widget: "boolean", default: true}
-                  - {label: "每页文章数", name: "postsPerPage", widget: "number", default: 6}
-                  - {label: "启用相关文章", name: "isRelatedPostsEnabled", widget: "boolean", default: true}
-                  - {label: "相关文章数量", name: "relatedPostsCount", widget: "number", default: 4}
-
-  # ========================================
-  # 2. 导航菜单
-  # ========================================
-  - name: "navigation"
-    label: "🧭 导航菜单"
-    delete: false
-    editor:
-      preview: false
-    files:
-      - name: "menu"
-        label: "导航设置"
-        file: "src/data/navigation.json"
-        create: true
-        fields:
-          - label: "顶部导航"
-            name: "headerData"
-            widget: "object"
-            fields:
-              - label: "导航链接"
+              - label: "菜单项"
                 name: "links"
                 widget: "list"
+                summary: "{{fields.text}}"
                 fields:
                   - {label: "菜单文字", name: "text", widget: "string"}
-                  - {label: "链接地址", name: "href", widget: "string", required: false}
+                  - {label: "链接", name: "href", widget: "string"}
                   - label: "子菜单"
                     name: "links"
                     widget: "list"
                     required: false
+                    collapsed: true
                     fields:
-                      - {label: "子菜单文字", name: "text", widget: "string"}
-                      - {label: "链接地址", name: "href", widget: "string"}
-              
-              - label: "右侧按钮"
+                      - {label: "文字", name: "text", widget: "string"}
+                      - {label: "链接", name: "href", widget: "string"}
+
+  # 首页内容
+  - name: "homepage"
+    label: "🏠 首页内容"
+    delete: false
+    files:
+      - name: "content"
+        label: "首页内容"
+        file: "src/content/homepage/content.yaml"
+        fields:
+          - label: "主横幅"
+            name: "hero"
+            widget: "object"
+            collapsed: false
+            fields:
+              - {label: "标题", name: "title", widget: "string"}
+              - {label: "副标题", name: "subtitle", widget: "text"}
+              - {label: "标语", name: "tagline", widget: "string", required: false}
+              - {label: "背景图", name: "image", widget: "image", required: false}
+              - label: "按钮"
                 name: "actions"
                 widget: "list"
                 max: 2
                 fields:
-                  - {label: "按钮文字", name: "text", widget: "string"}
-                  - {label: "链接地址", name: "href", widget: "string"}
-                  - {label: "打开方式", name: "target", widget: "select", options: ["_self", "_blank"], default: "_self"}
-
-          - label: "页脚设置"
-            name: "footerData"
-            widget: "object"
-            fields:
-              - label: "页脚链接组"
-                name: "links"
-                widget: "list"
-                fields:
-                  - {label: "组标题", name: "title", widget: "string"}
-                  - label: "链接列表"
-                    name: "links"
-                    widget: "list"
-                    fields:
-                      - {label: "链接文字", name: "text", widget: "string"}
-                      - {label: "链接地址", name: "href", widget: "string"}
-              
-              - label: "社交媒体"
-                name: "socialLinks"
-                widget: "list"
-                fields:
-                  - {label: "图标", name: "icon", widget: "string", hint: "使用 tabler 图标，如: tabler:brand-github"}
+                  - {label: "文字", name: "text", widget: "string"}
                   - {label: "链接", name: "href", widget: "string"}
-                  - {label: "说明", name: "ariaLabel", widget: "string"}
+                  - {label: "样式", name: "variant", widget: "select", options: ["primary", "secondary"]}
+                  - {label: "图标", name: "icon", widget: "string", required: false}
 
-  # ========================================
-  # 3. 首页内容管理
-  # ========================================
-  - name: "homepage"
-    label: "🏠 首页内容"
-    delete: false
-    editor:
-      preview: true
-    files:
-      # Hero 区域
-      - name: "hero"
-        label: "主横幅 (Hero)"
-        file: "src/data/homepage/hero.json"
-        create: true
-        fields:
-          - {label: "标语", name: "tagline", widget: "string", required: false}
-          - {label: "标题", name: "title", widget: "string"}
-          - {label: "副标题", name: "subtitle", widget: "text"}
-          - label: "按钮组"
-            name: "actions"
-            widget: "list"
-            max: 2
-            fields:
-              - {label: "按钮文字", name: "text", widget: "string"}
-              - {label: "链接", name: "href", widget: "string"}
-              - {label: "样式", name: "variant", widget: "select", options: ["primary", "secondary", "tertiary", "link"], default: "primary"}
-              - {label: "图标", name: "icon", widget: "string", required: false}
-          - {label: "背景图片", name: "image", widget: "image", required: false}
-
-      # Features 特色功能
-      - name: "features"
-        label: "特色功能 (Features)"
-        file: "src/data/homepage/features.json"
-        create: true
-        fields:
-          - {label: "版块ID", name: "id", widget: "string", default: "features"}
-          - {label: "标语", name: "tagline", widget: "string", required: false}
-          - {label: "标题", name: "title", widget: "string"}
-          - {label: "副标题", name: "subtitle", widget: "text", required: false}
-          - {label: "列数", name: "columns", widget: "number", default: 3, min: 1, max: 4}
-          - label: "功能列表"
-            name: "items"
-            widget: "list"
+          - label: "特色功能"
+            name: "features"
+            widget: "object"
+            collapsed: true
             fields:
               - {label: "标题", name: "title", widget: "string"}
-              - {label: "描述", name: "description", widget: "text"}
-              - {label: "图标", name: "icon", widget: "string", hint: "使用 tabler 图标"}
-
-      # Content 内容区块
-      - name: "content"
-        label: "内容区块 (Content)"
-        file: "src/data/homepage/content.json"
-        create: true
-        fields:
-          - label: "内容区块列表"
-            name: "sections"
-            widget: "list"
-            fields:
-              - {label: "区块ID", name: "id", widget: "string"}
-              - {label: "标题", name: "title", widget: "string"}
-              - {label: "副标题", name: "subtitle", widget: "text", required: false}
-              - {label: "内容", name: "content", widget: "markdown", required: false}
-              - {label: "图片", name: "image", widget: "image", required: false}
-              - {label: "图片位置", name: "isReversed", widget: "boolean", default: false, hint: "勾选后图片在左侧"}
-              - label: "特点列表"
+              - {label: "副标题", name: "subtitle", widget: "string", required: false}
+              - label: "功能项"
                 name: "items"
                 widget: "list"
                 fields:
                   - {label: "标题", name: "title", widget: "string"}
                   - {label: "描述", name: "description", widget: "text"}
-                  - {label: "图标", name: "icon", widget: "string"}
+                  - {label: "图标", name: "icon", widget: "string", hint: "使用 tabler: 前缀"}
 
-      # Steps 步骤
-      - name: "steps"
-        label: "步骤说明 (Steps)"
-        file: "src/data/homepage/steps.json"
-        create: true
-        fields:
-          - {label: "标题", name: "title", widget: "string"}
-          - {label: "副标题", name: "subtitle", widget: "text", required: false}
-          - {label: "图片", name: "image", widget: "image", required: false}
-          - label: "步骤列表"
-            name: "items"
-            widget: "list"
-            fields:
-              - {label: "步骤标题", name: "title", widget: "string"}
-              - {label: "描述", name: "description", widget: "text", required: false}
-              - {label: "图标", name: "icon", widget: "string"}
-
-      # FAQs 常见问题
-      - name: "faqs"
-        label: "常见问题 (FAQs)"
-        file: "src/data/homepage/faqs.json"
-        create: true
-        fields:
-          - {label: "标题", name: "title", widget: "string", default: "常见问题"}
-          - {label: "副标题", name: "subtitle", widget: "text", required: false}
-          - label: "问题列表"
-            name: "items"
-            widget: "list"
-            fields:
-              - {label: "问题", name: "title", widget: "string"}
-              - {label: "答案", name: "description", widget: "text"}
-
-      # Stats 统计
-      - name: "stats"
-        label: "统计数据 (Stats)"
-        file: "src/data/homepage/stats.json"
-        create: true
-        fields:
-          - {label: "标题", name: "title", widget: "string", required: false}
-          - label: "统计项"
-            name: "stats"
-            widget: "list"
-            max: 4
-            fields:
-              - {label: "数值", name: "amount", widget: "string"}
-              - {label: "标题", name: "title", widget: "string"}
-              - {label: "图标", name: "icon", widget: "string", required: false}
-
-      # Call to Action
-      - name: "cta"
-        label: "行动号召 (Call to Action)"
-        file: "src/data/homepage/cta.json"
-        create: true
-        fields:
-          - {label: "标题", name: "title", widget: "string"}
-          - {label: "副标题", name: "subtitle", widget: "text"}
-          - label: "按钮"
-            name: "actions"
-            widget: "list"
-            max: 2
-            fields:
-              - {label: "按钮文字", name: "text", widget: "string"}
-              - {label: "链接", name: "href", widget: "string"}
-              - {label: "样式", name: "variant", widget: "select", options: ["primary", "secondary"], default: "primary"}
-
-  # ========================================
-  # 4. 页面管理
-  # ========================================
-  - name: "pages"
-    label: "📄 页面管理"
-    delete: false
-    editor:
-      preview: true
-    files:
-      # 关于页面
-      - name: "about"
-        label: "关于我们"
-        file: "src/data/pages/about.json"
-        create: true
-        fields:
-          - {label: "页面标题", name: "title", widget: "string", default: "关于我们"}
-          - {label: "页面描述", name: "description", widget: "text", required: false}
-          - label: "Hero 区域"
-            name: "hero"
-            widget: "object"
-            fields:
-              - {label: "标语", name: "tagline", widget: "string", default: "关于我们"}
-              - {label: "标题", name: "title", widget: "string"}
-              - {label: "副标题", name: "subtitle", widget: "text"}
-              - {label: "图片", name: "image", widget: "image"}
-          
-          - label: "统计数据"
-            name: "stats"
-            widget: "object"
-            fields:
-              - {label: "标题", name: "title", widget: "string"}
-              - label: "数据项"
-                name: "stats"
-                widget: "list"
-                fields:
-                  - {label: "标题", name: "title", widget: "string"}
-                  - {label: "数值", name: "amount", widget: "string"}
-
-          - label: "团队成员"
-            name: "team"
-            widget: "list"
-            required: false
-            fields:
-              - {label: "姓名", name: "name", widget: "string"}
-              - {label: "职位", name: "position", widget: "string"}
-              - {label: "照片", name: "image", widget: "image"}
-              - {label: "简介", name: "bio", widget: "text"}
-
-      # 服务页面
-      - name: "services"
-        label: "服务"
-        file: "src/data/pages/services.json"
-        create: true
-        fields:
-          - {label: "页面标题", name: "title", widget: "string", default: "我们的服务"}
-          - {label: "页面描述", name: "description", widget: "text", required: false}
-          - label: "服务列表"
-            name: "services"
-            widget: "list"
-            fields:
-              - {label: "服务名称", name: "title", widget: "string"}
-              - {label: "描述", name: "description", widget: "text"}
-              - {label: "图标", name: "icon", widget: "string"}
-              - {label: "详情链接", name: "href", widget: "string", required: false}
-
-      # 定价页面
-      - name: "pricing"
-        label: "定价"
-        file: "src/data/pages/pricing.json"
-        create: true
-        fields:
-          - {label: "页面标题", name: "title", widget: "string", default: "定价方案"}
-          - {label: "副标题", name: "subtitle", widget: "text"}
-          - label: "价格方案"
-            name: "prices"
-            widget: "list"
-            fields:
-              - {label: "方案名称", name: "title", widget: "string"}
-              - {label: "副标题", name: "subtitle", widget: "string"}
-              - {label: "价格", name: "price", widget: "number"}
-              - {label: "周期", name: "period", widget: "string", default: "/ 月"}
-              - {label: "是否推荐", name: "hasRibbon", widget: "boolean", default: false}
-              - {label: "推荐标签", name: "ribbonTitle", widget: "string", default: "热门", condition: {field: "hasRibbon", value: true}}
-              - label: "功能列表"
-                name: "items"
-                widget: "list"
-                fields:
-                  - {label: "功能描述", name: "description", widget: "string"}
-              - label: "按钮"
-                name: "callToAction"
-                widget: "object"
-                fields:
-                  - {label: "按钮文字", name: "text", widget: "string"}
-                  - {label: "链接", name: "href", widget: "string"}
-
-      # 联系页面
-      - name: "contact"
-        label: "联系我们"
-        file: "src/data/pages/contact.json"
-        create: true
-        fields:
-          - {label: "页面标题", name: "title", widget: "string", default: "联系我们"}
-          - {label: "页面描述", name: "description", widget: "text"}
-          - label: "联系信息"
-            name: "contactInfo"
-            widget: "object"
-            fields:
-              - {label: "电话", name: "phone", widget: "string"}
-              - {label: "邮箱", name: "email", widget: "string"}
-              - {label: "地址", name: "address", widget: "text"}
-          - label: "表单设置"
-            name: "form"
-            widget: "object"
-            fields:
-              - {label: "表单标题", name: "title", widget: "string"}
-              - {label: "表单描述", name: "subtitle", widget: "text"}
-              - {label: "按钮文字", name: "button", widget: "string", default: "发送消息"}
-
-  # ========================================
-  # 5. 博客文章
-  # ========================================
+  # 博客文章
   - name: "blog"
     label: "📝 博客文章"
-    folder: "src/data/post"
+    folder: "src/content/post"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    preview_path: "blog/{{slug}}"
     fields:
       - {label: "标题", name: "title", widget: "string"}
-      - {label: "摘要", name: "excerpt", widget: "text", hint: "简短描述，显示在文章列表中"}
-      - {label: "发布日期", name: "publishDate", widget: "datetime", format: "YYYY-MM-DD HH:mm"}
-      - {label: "更新日期", name: "updateDate", widget: "datetime", format: "YYYY-MM-DD HH:mm", required: false}
+      - {label: "发布日期", name: "publishDate", widget: "datetime"}
+      - {label: "摘要", name: "excerpt", widget: "text"}
       - {label: "特色图片", name: "image", widget: "image", required: false}
       - {label: "分类", name: "category", widget: "string"}
-      - label: "标签"
-        name: "tags"
-        widget: "list"
-        field: {label: "标签", name: "tag", widget: "string"}
-      - {label: "作者", name: "author", widget: "string", default: "AstroWind"}
+      - {label: "标签", name: "tags", widget: "list", field: {label: "标签", name: "tag", widget: "string"}}
+      - {label: "作者", name: "author", widget: "string"}
       - {label: "草稿", name: "draft", widget: "boolean", default: false}
-      - label: "SEO设置"
-        name: "metadata"
-        widget: "object"
-        collapsed: true
-        fields:
-          - {label: "自定义标题", name: "title", widget: "string", required: false}
-          - {label: "自定义描述", name: "description", widget: "text", required: false}
       - {label: "正文", name: "body", widget: "markdown"}
-
-  # ========================================
-  # 6. 小部件内容
-  # ========================================
-  - name: "widgets"
-    label: "🧩 小部件"
-    delete: false
-    editor:
-      preview: false
-    files:
-      # Logo 设置
-      - name: "logo"
-        label: "网站 Logo"
-        file: "src/data/widgets/logo.json"
-        fields:
-          - {label: "Logo 文字", name: "text", widget: "string"}
-          - {label: "Logo 图片", name: "image", widget: "image", required: false}
-          - {label: "仅显示图片", name: "imageOnly", widget: "boolean", default: false}
