@@ -8,4 +8,24 @@
       "icon": "tabler:code"
     }
   ]
+  "hero": {
+    "title": "Your Hero Title",
+    "subtitle": "Your hero subtitle or description",
+    "callToAction": {
+      "text": "Get Started",
+      "href": "#features"
+    }
+  },
+  "features": [
+    {
+      "title": "Feature 1",
+      "description": "Description of your first feature",
+      "icon": "icon-name"
+    },
+    {
+      "title": "Feature 2", 
+      "description": "Description of your second feature",
+      "icon": "icon-name"
+    }
+  ]
 }
