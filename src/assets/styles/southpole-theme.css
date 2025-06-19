@@ -1,0 +1,285 @@
+/* ========================================
+   South Pole 风格主题 - 完整版
+   直接复制这个文件的所有内容
+   ======================================== */
+
+/* 1. 颜色系统 */
+:root {
+  /* 主色调 - 环保绿色系 */
+  --aw-color-primary: #00A859;
+  --aw-color-secondary: #006B3C;
+  --aw-color-accent: #E8F5E9;
+  
+  /* 文字颜色 */
+  --aw-color-text-heading: #1A1A1A;
+  --aw-color-text-default: #2D2D2D;
+  --aw-color-text-muted: #737373;
+  
+  /* 背景颜色 */
+  --aw-color-bg-page: #FFFFFF;
+  --aw-bg-subtle: linear-gradient(180deg, #FFFFFF 0%, #F5F5F5 100%);
+}
+
+/* 2. 字体系统 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif !important;
+  color: var(--aw-color-text-default) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif !important;
+  color: var(--aw-color-text-heading) !important;
+  font-weight: 700 !important;
+}
+
+/* 3. 按钮样式 - 自动应用到所有按钮 */
+.btn, 
+button,
+a[class*="btn-"],
+.aw-link-button {
+  border-radius: 6px !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+
+/* 主按钮 */
+.btn-primary,
+a[class*="btn-primary"] {
+  background: #00A859 !important;
+  border-color: #00A859 !important;
+  color: white !important;
+}
+
+.btn-primary:hover,
+a[class*="btn-primary"]:hover {
+  background: #006B3C !important;
+  border-color: #006B3C !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 16px rgba(0, 168, 89, 0.2) !important;
+}
+
+/* 次要按钮 */
+.btn-secondary,
+a[class*="btn-secondary"] {
+  background: transparent !important;
+  border: 2px solid #00A859 !important;
+  color: #00A859 !important;
+}
+
+.btn-secondary:hover,
+a[class*="btn-secondary"]:hover {
+  background: #00A859 !important;
+  color: white !important;
+}
+
+/* 4. 导航栏样式 */
+header {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* 导航链接 */
+header a {
+  color: #2D2D2D !important;
+  font-weight: 500 !important;
+  transition: color 0.3s ease !important;
+  position: relative !important;
+}
+
+header a:hover {
+  color: #00A859 !important;
+}
+
+/* Logo 文字 */
+.logo span {
+  color: #1A1A1A !important;
+  font-weight: 700 !important;
+}
+
+/* 5. Hero 区域 */
+.hero,
+section:first-of-type {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FFF9 100%) !important;
+}
+
+/* Hero 标题 */
+.hero h1,
+section:first-of-type h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem) !important;
+  line-height: 1.2 !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Hero 副标题 */
+.hero p,
+section:first-of-type > div > p {
+  font-size: 1.25rem !important;
+  color: #737373 !important;
+  line-height: 1.75 !important;
+}
+
+/* 6. 卡片样式 */
+.card,
+article,
+.feature,
+[class*="rounded"] {
+  background: white !important;
+  border: 1px solid #E5E5E5 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+  transition: all 0.3s ease !important;
+}
+
+.card:hover,
+article:hover,
+.feature:hover,
+[class*="rounded"]:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1) !important;
+  border-color: #00A859 !important;
+}
+
+/* 7. 图标样式 */
+.icon,
+[class*="icon"],
+svg {
+  color: #00A859 !important;
+}
+
+/* 图标容器 */
+.icon-container,
+.feature-icon,
+[class*="icon"]:not(svg) {
+  background: #E8F5E9 !important;
+  border-radius: 12px !important;
+  padding: 12px !important;
+}
+
+/* 8. 统计数字 */
+.stat-number,
+[class*="text-4xl"],
+[class*="text-5xl"],
+[class*="text-6xl"] {
+  color: #00A859 !important;
+  font-weight: 700 !important;
+}
+
+/* 9. 页脚 */
+footer {
+  background: #F5F5F5 !important;
+  border-top: 1px solid #E5E5E5 !important;
+}
+
+footer a {
+  color: #737373 !important;
+}
+
+footer a:hover {
+  color: #00A859 !important;
+}
+
+/* 10. 动画效果 */
+* {
+  transition-property: transform, box-shadow, border-color !important;
+  transition-duration: 0.3s !important;
+  transition-timing-function: ease !important;
+}
+
+/* 淡入动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section {
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* 11. 响应式调整 */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem !important;
+  }
+  
+  .hero p,
+  section:first-of-type > div > p {
+    font-size: 1.125rem !important;
+  }
+  
+  .btn {
+    padding: 10px 20px !important;
+    font-size: 0.875rem !important;
+  }
+}
+
+/* 12. 特殊效果 */
+/* 毛玻璃效果 */
+.glass {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* 渐变文字 */
+.gradient-text {
+  background: linear-gradient(135deg, #00A859 0%, #006B3C 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+/* 13. 修复常见问题 */
+/* 确保颜色覆盖 */
+.text-primary { color: #00A859 !important; }
+.text-secondary { color: #006B3C !important; }
+.bg-primary { background-color: #00A859 !important; }
+.bg-secondary { background-color: #006B3C !important; }
+
+/* 确保链接颜色 */
+a:not(.btn):not([class*="btn-"]) {
+  color: #00A859 !important;
+}
+
+a:not(.btn):not([class*="btn-"]):hover {
+  color: #006B3C !important;
+  text-decoration: underline !important;
+}
+
+/* 14. 深色模式（可选） */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --aw-color-bg-page: #0A0A0A;
+    --aw-color-text-default: #E5E5E5;
+    --aw-color-text-heading: #FFFFFF;
+  }
+  
+  body {
+    background: #0A0A0A !important;
+  }
+  
+  .card,
+  article {
+    background: #1A1A1A !important;
+    border-color: #2D2D2D !important;
+  }
+}
+
+/* 15. 最终覆盖 - 确保样式生效 */
+#header,
+.header,
+[id*="header"] {
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* 完成！主题安装成功 */
+</style>
