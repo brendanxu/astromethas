@@ -7,25 +7,25 @@
       "description": "使用最新技术栈开发现代化网站",
       "icon": "tabler:code"
     }
-  ]
+  ],
   "hero": {
-    "title": "Your Hero Title",
-    "subtitle": "Your hero subtitle or description",
+    "title": "欢迎来到我的网站",
+    "subtitle": "专业的技术服务，为您提供最佳解决方案",
     "callToAction": {
-      "text": "Get Started",
+      "text": "开始了解",
       "href": "#features"
     }
   },
   "features": [
     {
-      "title": "Feature 1",
-      "description": "Description of your first feature",
-      "icon": "icon-name"
+      "title": "前端开发",
+      "description": "使用React、Vue等现代框架开发用户界面",
+      "icon": "tabler:brand-react"
     },
     {
-      "title": "Feature 2", 
-      "description": "Description of your second feature",
-      "icon": "icon-name"
+      "title": "后端开发", 
+      "description": "构建稳定可靠的服务器端应用程序",
+      "icon": "tabler:server"
     }
   ]
 }
